@@ -19,12 +19,15 @@ def read_file(file_name):
     return(content)#.replace("\n",""))
 
 def metadata(file_name):
-    from PyPDF2 import PdfReader
-    with open(file_name, 'rb') as f:
-        content = f.read()
+    from pypdf import PdfReader
     reader = PdfReader(file_name)
+    meta = reader.metadata
+    #with open(file_name, 'rb') as f:
+     #   content = f.read()
     author = meta.author
-    return author
+    title = meta.title
+    subject = meta.subject
+    return author,title,subject
 
 
 if __name__ == "__main__":
